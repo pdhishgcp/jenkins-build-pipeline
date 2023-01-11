@@ -31,6 +31,8 @@ pipeline {
 	 steps {
     
     sh 'gcloud compute instances create hello-1 --zone=us-central1-a'
+    sh 'gcloud projects add-iam-policy-binding dp2023 --role roles/compute.instances.create --member=serviceAccount:dpterraform@dp2023.iam.gserviceaccount.com'
+
         
     }
     }
