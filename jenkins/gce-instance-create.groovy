@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-    SVC_ACCOUNT_KEY = credentials('terraform-auth')
+    SVC_ACCOUNT_KEY = credentials('jenkins-auth')
   }
      
     stages {
@@ -21,7 +21,7 @@ pipeline {
 		 dir('jenkins')
 		 {
     
-        sh 'gcloud auth activate-service-account jenkins@mi-dev-lab.iam.gserviceaccount.com --key-file=jenkins.json'
+        sh 'gcloud auth activate-service-account dpterraform@dp2023.iam.gserviceaccount.com --key-file=jenkins.json'
     }
     }
 	}
