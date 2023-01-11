@@ -22,8 +22,8 @@ pipeline {
 		 {
     
         sh 'gcloud auth activate-service-account dpterraform@dp2023.iam.gserviceaccount.com --key-file=jenkins.json'
-       sh ' gcloud projects add-iam-policy-binding dp2023 --member="serviceAccount:tdpterraform@dp2023.iam.gserviceaccount.com" --role=roles/storage.objectViewer'
-       sh ' gcloud projects add-iam-policy-binding dp2023 --member="serviceAccount:tdpterraform@dp2023.iam.gserviceaccount.com" --role=roles/compute.instanceAdmin.v1'
+       sh ' gcloud projects add-iam-policy-binding dp2023 --member="serviceAccount:dpterraform@dp2023.iam.gserviceaccount.com" --role=roles/storage.objectViewer'
+       sh ' gcloud projects add-iam-policy-binding dp2023 --member="serviceAccount:dpterraform@dp2023.iam.gserviceaccount.com" --role=roles/compute.instanceAdmin.v1'
 
     }
     }
