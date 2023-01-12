@@ -30,7 +30,7 @@ pipeline {
 	stage('Create Instance') {
 	 steps {
     
-    sh 'gcloud compute instances create hello-2 --zone=us-central1-a'
+    sh 'gcloud compute instances create $VMNAME --zone=$Zone'
         
     }
     }
