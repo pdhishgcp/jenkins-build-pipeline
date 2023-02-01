@@ -1,0 +1,33 @@
+Create a new Instance in project A using image from Project B .
+
+Note: “Project A” is New Project 
+	   “Project B “is Old Project
+
+
+
+1.Create a User Service Account in Project A along with Creation of Key.
+
+ gcloud iam service-accounts create jenkins --display-name=jenkins
+ gcloud iam service-accounts keys create jenkins --iam-account=jenkins@dhish.iam.gserviceaccount.com --key-file-type=json
+ 
+
+
+2.Grant Compute Image User role to the above service account on Project B
+   gcloud config set project dp2023
+   gcloud auth activate-service-account dpterraform@dp2023.iam.gserviceaccount.com --key-file=dp2023.json
+   gcloud projects add-iam-policy-binding dp2023 --member=“serviceAccount:jenkins@dhish1212.iam.gserviceaccount.com” --role=roles/compute.imageUser
+
+
+
+
+3. Create a vm (jenkins disk )image on project B 
+gcloud compute images create jenkins-image --project=dp2023 --source-disk=instance-dp2023 --source-disk-zone=europe-west1-b --storage-location=us
+
+
+
+
+
+4.Create a instance in project A using image from Project B 
+ gcloud config set project dhish 
+ gcloud auth activate-service-account jenkins@dhish.iam.gserviceaccount.com --key-file=jenkins.json
+ gcloud compute instance create Jenkins-instance1 —zone=us-central1-a --tags=http-server --image
